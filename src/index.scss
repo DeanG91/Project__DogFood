@@ -1,0 +1,42 @@
+@import '~normalize.css';
+@import './styles/mixins.scss';
+
+* {
+  box-sizing: inherit;
+}
+html {
+  box-sizing: border-box;
+}
+body {
+ @include font-body(400);
+}
+
+.container {
+  max-width: 1024px;
+  padding-left: 16px;
+  padding-right: 16px;
+  width: 95%;
+  margin: 0 auto;
+}
+.content__dark {
+  color: white;
+  border-color: green;
+  background-color: darkgrey;
+}
+.content__light {
+  color: black;
+  border-color: yellow;
+  background-color: white;
+}
+
+img {
+  max-width: 100%;
+}
+
+.content {
+  padding: 20px 0;
+}
+
+.content__sort {
+  margin-bottom: 40px;
+}
