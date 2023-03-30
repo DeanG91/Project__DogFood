@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import Footer from "../Footer/footer";
+import Footer from "../Footer/footer.tsx";
 import Header from "../Header/header";
 import Logo from "../Logo/logo";
 import Search from "../Search/search";
@@ -34,6 +34,9 @@ import { parseJwt } from "../../utils/parseJWT";
 import { useCurrentWidth } from "../../hooks/useCurrentWidth";
 import { EditPost } from "../EditPost/EditPost";
 import { CreateProduct } from "../CreateProduct/CreateProduct";
+import { BasketPage } from "../../pages/basket/basketPage";
+import { TsExample } from "./index.tsx";
+// import { Test } from "./index.tsx";
 // import i18n from "i18next";
 // import { useTranslation, initReactI18next } from "react-i18next";
 
@@ -147,7 +150,7 @@ function App() {
     [cards, currentUser?._id]
   );
 
-  const sortedData = (currentSort) => {
+  const sortedData = useCallback((currentSort) => {
     switch (currentSort) {
       case "expensive":
         setCards((state) => [...state.sort((a, b) => b.price - a.price)]);
@@ -171,7 +174,7 @@ function App() {
         setCards([...cards.sort((a, b) => a.price - b.price)]);
         break;
     }
-  };
+  },[cards]);
 
   const location = useLocation();
   const backgroundLocation = location.state?.backgroundLocation;
@@ -288,6 +291,8 @@ function App() {
                   }
                 ></Route>
                 <Route path="visual" element={<Chart />}></Route>
+                <Route path="basket" element={<BasketPage />}></Route>
+
                 {authRoutes}
                 <Route path="style-guide" element={<StyleGuide />}></Route>
                 <Route
@@ -310,6 +315,7 @@ function App() {
             </div>
           )}
           <Footer />
+          <TsExample />
         </UserContext.Provider>
       </CardContext.Provider>
     </>

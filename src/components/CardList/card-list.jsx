@@ -6,7 +6,7 @@ const CardList = ({ onProductLike, cards = [] }) => {
   return (
     <div className='cards'>
       {cards.length && cards.map((product) => (
-        <Card key={product._id} product={product} onProductLike={onProductLike} />
+        <Card key={product._id} product={product} {...product} onProductLike={onProductLike} />
       ))}
     </div>
   );

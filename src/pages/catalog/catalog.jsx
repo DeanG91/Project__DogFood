@@ -67,10 +67,9 @@ export const CatalogPage = () => {
     <div className="catalog-page">
       <Sort />
       <div className="content__cards">
-        {/* <CardList cards={cards} onProductLike={handleProductLike} /> */}
         <div className="cards">
           {cards.map((item) => (
-            <Card key={item._id} {...item} item={item} onProductLike={handleProductLike} />
+            <Card key={item._id} {...item} product={item} onProductLike={handleProductLike} />
           ))}
         </div>
       </div>

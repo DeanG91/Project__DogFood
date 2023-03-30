@@ -1,4 +1,4 @@
-import { useContext, useMemo, useState } from "react";
+import { memo, useContext, useMemo, useState } from "react";
 import { Select } from 'antd';
 import { useTranslation } from "react-i18next";
 import { CardContext } from "../../context/cardContext";
@@ -9,7 +9,7 @@ const Sort = () => {
   const { onSortData } = useContext(CardContext);
   const { isMobileView } = useContext(UserContext);
 
-  const [sortedId, setSortedId] = useState("newest");
+  const [sortedId, setSortedId] = useState(localStorage.getItem('sort') ?? 'newest');
 
   const { t } = useTranslation();
 
@@ -29,13 +29,17 @@ const Sort = () => {
     console.log(`selected ${value}`);
     onSortData(value);
     setSortedId(value);
+    localStorage.setItem('sort', value);
   };
 
   const handleChange = (e, id) => {
     e.preventDefault();
     onSortData(id);
     setSortedId(id);
+    localStorage.setItem('sort', id);
   };
+
+
 
   return (<>
 
@@ -69,4 +73,4 @@ const Sort = () => {
   );
 };
 
-export default Sort;
+export default memo(Sort);

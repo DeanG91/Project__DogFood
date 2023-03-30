@@ -66,10 +66,10 @@ function Header(props) {
                 <span className={s.iconBubble}>{favorites.length}</span>
               )}
             </Link>
-            <Link to={'/cart'} className={s.favoritesLink}>
+            <Link to={'/basket'} className={s.favoritesLink}>
               <CartIcon />
-              {favorites.length !== 0 && (
-                <span className={s.iconBubble}>{favorites.length}</span>
+              {basket.length !== 0 && (
+                <span className={s.iconBubble}>{basket.length}</span>
               )}
             </Link>
             <span onClick={() => setIsActiveModal(true)}>

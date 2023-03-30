@@ -21,33 +21,34 @@ const Card = ({
   likes,
   _id,
   onProductLike,
-  item
+  product
 }) => {
   const { setBasket, basket } = useContext(CardContext);
   const currentUser = useSelector((state) => state.user.data);
   // console.log({ user });
-  const liked = likes.some((id) => id === currentUser?._id);
+  const liked = likes?.some((id) => id === currentUser?._id);
   const discount_price = Math.round(price - (price * discount) / 100);
 
   const addToBasket = () => {
-    setBasket((state) => {
-      console.log({ state });
-      const findEl = state.find(e => e.product._id === _id);
-      if (findEl) {
-        // return [];
-        console.log({ state, findEl });
-        const newState = state.map(e => {
-          if (e.product._id === findEl.product._id) {
-            return { product: item, count: e.count + 1 }
-          }
-          return e
-        })
-        return newState
-      } else {
-        console.log({ _id });
-        return [...state, { product: item, count: 1 }]
-      }
-    })
+    // setBasket((state) => {
+    //   console.log({ state });
+    //   const findEl = state.find(e => e.product._id === _id);
+    //   if (findEl) {
+    //     // return [];
+    //     console.log({ state, findEl });
+    //     const newState = state.map(e => {
+    //       if (e.product._id === findEl.product._id) {
+    //         return { product: item, count: e.count + 1 }
+    //       }
+    //       return e
+    //     })
+    //     return newState
+    //   } else {
+    //     console.log({ _id });
+    //     return [...state, { product: item, count: 1 }]
+    //   }
+    // })
+    setBasket((st) => [...st, product])
   }
 
   return (
